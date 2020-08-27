@@ -1,5 +1,5 @@
 # SENAI-2-Etapa
-Todo conteudo passado na segunda etapa do senai
+Todo conteudo passado na segunda etapa do senai<br/>
 <i>Wiki disponivel neste repositorio com os exercicios propostos</i>
 
 <h2>Roadmap 2ª Etapa de aprendizado</h2>
