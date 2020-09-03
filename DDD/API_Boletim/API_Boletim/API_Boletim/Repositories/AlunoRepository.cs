@@ -22,7 +22,7 @@ namespace API_Boletim.Repositories
             cmd.Connection = conexao.Conectar();
             cmd.CommandText =
                 "INSERT INTO Aluno(Nome,Ra,Idade) " +
-                "VALUES(@Nome,@Ra,@Idade)"
+                "VALUES(@Nome,@Ra,@Idade')"
                 ;
             cmd.Parameters.AddWithValue("Nome", a.Nome);
             cmd.Parameters.AddWithValue("Ra",a.Ra);

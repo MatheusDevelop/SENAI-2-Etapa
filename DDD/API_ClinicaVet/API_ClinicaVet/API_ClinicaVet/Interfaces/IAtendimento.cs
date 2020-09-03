@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace API_ClinicaVet.Interfaces
 {
-    interface ICrud
+    interface IAtendimento
     {
         List<Atendimento> ReadAll();
         List<Atendimento> Create(Atendimento a );

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace API_ClinicaVet.Repositories
 {
-    public class AtendimentoRepository : ICrud
+    public class AtendimentoRepository : IAtendimento
     {
         ClinicaContext con = new ClinicaContext();
 
