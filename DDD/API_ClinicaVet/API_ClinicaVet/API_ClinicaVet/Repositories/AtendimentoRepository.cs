@@ -36,9 +36,6 @@ namespace API_ClinicaVet.Repositories
 
 
         }
-
-        
-
         public List<Atendimento> ReadAll()
         {
             cmd.Connection = con.Connect();
@@ -100,11 +97,13 @@ namespace API_ClinicaVet.Repositories
 
             
         }
-
         public List<Atendimento> Update(int id,Atendimento a)
         {
             cmd.Connection = con.Connect();
 
+            //IdPet e IdVet trocam de valores quando atualizados por este metodo
+            //Não tentei resolver ainda
+            
             cmd.CommandText = 
                 "UPDATE Atendimento SET " +
                 "Descricao = @Descricao , " +

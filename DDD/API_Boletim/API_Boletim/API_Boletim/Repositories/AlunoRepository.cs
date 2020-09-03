@@ -17,14 +17,31 @@ namespace API_Boletim.Repositories
         //Obj que executa os comandos do banco
         SqlCommand cmd = new SqlCommand();
 
-        public Aluno Create(Aluno a)
+        public void Create(Aluno a)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+            cmd.CommandText =
+                "INSERT INTO Aluno(Nome,Ra,Idade) " +
+                "VALUES(@Nome,@Ra,@Idade)"
+                ;
+            cmd.Parameters.AddWithValue("Nome", a.Nome);
+            cmd.Parameters.AddWithValue("Ra",a.Ra);
+            cmd.Parameters.AddWithValue("Idade", a.Idade);
+            SqlDataReader data = cmd.ExecuteReader();
+            conexao.Desconectar();
+           
         }
 
-        public Aluno Delete(Aluno a)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+            cmd.CommandText = "DELETE FROM Aluno WHERE IdAluno = @id";
+            cmd.Parameters.AddWithValue("id", id);
+            SqlDataReader data = cmd.ExecuteReader();
+
+            conexao.Desconectar();
+
+
         }
 
         public List<Aluno> ReadAll()
@@ -93,9 +110,22 @@ namespace API_Boletim.Repositories
 
         }
 
-        public Aluno Update(Aluno a)
+        public Aluno Update(int id,Aluno a)
         {
-            throw new NotImplementedException();
+            cmd.Connection = conexao.Conectar();
+            cmd.CommandText =
+               "UPDATE Aluno SET " +
+               "Nome = @Nome , " +
+               "Ra = @Ra " +               
+               "WHERE IdAluno = @IdAluno";
+            cmd.Parameters.AddWithValue("IdAluno", id);
+            cmd.Parameters.AddWithValue("Ra", a.Ra);
+            cmd.Parameters.AddWithValue("Nome", a.Nome);
+
+            SqlDataReader data = cmd.ExecuteReader();
+
+            conexao.Desconectar();
+            return SearchForId(id);
         }
     }
 }

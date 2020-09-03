@@ -9,11 +9,11 @@ namespace API_Boletim.Interfaces
     interface IAluno
     {
         //CRUD
-        Aluno Create(Aluno a);
-        Aluno Delete(Aluno a);
+        public void Create(Aluno a);
+        public void Delete(int id);
         Aluno SearchForId(int id);
         List<Aluno> ReadAll();
-        Aluno Update(Aluno a);
+        Aluno Update(int id,Aluno a);
 
     }
 }
