@@ -31,7 +31,7 @@ namespace API_ClinicaVet.Repositories
         public void Delete(int id)
         {
             cmd.Connection = con.Connect();
-            cmd.CommandText = "DELETE FROM Tipo WHERE IdRaca= @id";
+            cmd.CommandText = "DELETE FROM Raca WHERE IdRaca= @id";
             cmd.Parameters.AddWithValue("id", id);
             SqlDataReader data = cmd.ExecuteReader();
 
