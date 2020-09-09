@@ -18,9 +18,11 @@ namespace EntityFCore.Contexts
         {
             if (!optionsBuilder.IsConfigured)   
             {
-                optionsBuilder.UseSqlServer(@"DataSrc=.\Sqlexpress;Initial Catalog = EntityFCore ;user id = sa;password = sa132");
+                optionsBuilder.UseSqlServer(@"Data Source=.\Sqlexpress;Initial Catalog = EntityFCore ;user id = sa;password = sa132");
             }
             base.OnConfiguring(optionsBuilder);
         }
+
+        
     }
 }

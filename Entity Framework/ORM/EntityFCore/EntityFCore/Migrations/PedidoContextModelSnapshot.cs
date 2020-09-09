@@ -48,6 +48,9 @@ namespace EntityFCore.Migrations
                     b.Property<Guid>("IdProduto")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("IdPedido");
