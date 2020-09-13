@@ -10,7 +10,7 @@ END;
 GO
 
 CREATE TABLE [Escola] (
-    [Id] uniqueidentifier NOT NULL,
+    [Id] uniqueidentifier NOT NULL ,
     [Nome] nvarchar(max) NULL,
     CONSTRAINT [PK_Escola] PRIMARY KEY ([Id])
 );
