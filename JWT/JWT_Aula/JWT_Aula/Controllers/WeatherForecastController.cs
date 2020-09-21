@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace EntityFCore.Controllers
+namespace JWT_Aula.Controllers
 {
     [ApiController]
     [Route("[controller]")]

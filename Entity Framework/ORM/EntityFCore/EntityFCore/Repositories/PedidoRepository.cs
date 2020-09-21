@@ -1,5 +1,6 @@
 ﻿using EntityFCore.Contexts;
 using EntityFCore.Domains;
+using EntityFCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityFCore.Repositories
 {
-    public class PedidoRepository
+    public class PedidoRepository:IPedido
     {
         private readonly PedidoContext _ctx;
 
@@ -77,33 +78,68 @@ namespace EntityFCore.Repositories
         }
 
         /// <summary>
-        /// Delete pedido in database
+        /// Update pedido in database
         /// </summary>
-        /// <param name="pedido">pedido object</param>
+        /// <param name="id">id of product</param>
+        /// <param name="newPedido">new product for updtate</param>
+       
 
-        public void Delete(Pedido pedido)
+        public void AtualizarPedido(Guid id, Pedido newPedido)
         {
             try
             {
-                _ctx.Pedidos.Remove(pedido);
-            }
-            catch (Exception ex)
+                Pedido pedidoTemp = SearchForId(id);
+                if (pedidoTemp == null)
+                {
+                    throw new Exception("Produto não encontrado");
+                }
+                else
+                {
+                    pedidoTemp.OrderDate    = newPedido.OrderDate;
+                    pedidoTemp.status       = newPedido.status;
+
+                    
+                    _ctx.Pedidos.Update(pedidoTemp);
+                    _ctx.SaveChanges();
+                }
+
+
+
+                
+            }catch(Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
-
-
-        public void Update(Pedido newPedido)
+        /// <summary>
+        /// Delete pedido in database
+        /// 
+        /// </summary>
+        /// <param name="id">id of product</param>
+        public void Delete(Guid id)
         {
             try
             {
-                _ctx.Pedidos.Update(newPedido);
+                Pedido pedidoTemp = SearchForId(id);
+                if (pedidoTemp == null)
+                {
+                    throw new Exception("Produto não encontrado");
+                }
+                else
+                {
+                    _ctx.Pedidos.Remove(pedidoTemp);
+                    _ctx.SaveChanges();
+                }
+
+
+
+
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+
         }
 
         #endregion
