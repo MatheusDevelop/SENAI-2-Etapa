@@ -1,6 +1,5 @@
 ﻿using EntityFCore.Contexts;
 using EntityFCore.Domains;
-using EntityFCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityFCore.Repositories
 {
-    public class PedidoRepository:IPedido
+    public class PedidoRepository
     {
         private readonly PedidoContext _ctx;
 
@@ -78,68 +77,33 @@ namespace EntityFCore.Repositories
         }
 
         /// <summary>
-        /// Update pedido in database
-        /// </summary>
-        /// <param name="id">id of product</param>
-        /// <param name="newPedido">new product for updtate</param>
-       
-
-        public void AtualizarPedido(Guid id, Pedido newPedido)
-        {
-            try
-            {
-                Pedido pedidoTemp = SearchForId(id);
-                if (pedidoTemp == null)
-                {
-                    throw new Exception("Produto não encontrado");
-                }
-                else
-                {
-                    pedidoTemp.OrderDate    = newPedido.OrderDate;
-                    pedidoTemp.status       = newPedido.status;
-
-                    
-                    _ctx.Pedidos.Update(pedidoTemp);
-                    _ctx.SaveChanges();
-                }
-
-
-
-                
-            }catch(Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        /// <summary>
         /// Delete pedido in database
-        /// 
         /// </summary>
-        /// <param name="id">id of product</param>
-        public void Delete(Guid id)
+        /// <param name="pedido">pedido object</param>
+
+        public void Delete(Pedido pedido)
         {
             try
             {
-                Pedido pedidoTemp = SearchForId(id);
-                if (pedidoTemp == null)
-                {
-                    throw new Exception("Produto não encontrado");
-                }
-                else
-                {
-                    _ctx.Pedidos.Remove(pedidoTemp);
-                    _ctx.SaveChanges();
-                }
-
-
-
-
+                _ctx.Pedidos.Remove(pedido);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
+        }
 
+
+        public void Update(Pedido newPedido)
+        {
+            try
+            {
+                _ctx.Pedidos.Update(newPedido);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         #endregion
