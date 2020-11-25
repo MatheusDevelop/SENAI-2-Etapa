@@ -1,0 +1,12 @@
+{
+  "name": "nyous",
+  "displayName": "nyous",
+  "expo": {
+    "name": "nyous",
+    "slug": "nyous",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
